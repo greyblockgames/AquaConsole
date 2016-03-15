@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AquaConsole", "AquaConsole\AquaConsole.csproj", "{508952B7-569B-4729-A4E0-EA774D56583D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginAPI", "PluginAPI\PluginAPI.csproj", "{D1DD1428-032D-4CF2-BA1B-D819F92325C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{508952B7-569B-4729-A4E0-EA774D56583D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{508952B7-569B-4729-A4E0-EA774D56583D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{508952B7-569B-4729-A4E0-EA774D56583D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{508952B7-569B-4729-A4E0-EA774D56583D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1DD1428-032D-4CF2-BA1B-D819F92325C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1DD1428-032D-4CF2-BA1B-D819F92325C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1DD1428-032D-4CF2-BA1B-D819F92325C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1DD1428-032D-4CF2-BA1B-D819F92325C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
