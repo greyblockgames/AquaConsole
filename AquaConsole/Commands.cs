@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace HackTool
+namespace AquaConsole
 {
     class Commands
     {

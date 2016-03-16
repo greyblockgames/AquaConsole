@@ -2,7 +2,7 @@
 using System.Linq;
 using PluginAPI;
 
-namespace HackTool
+namespace AquaConsole
 {
 
     class Program

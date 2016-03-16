@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HackTool.Properties {
+namespace AquaConsole.Properties {
     using System;
     
     
