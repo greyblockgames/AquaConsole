@@ -8,18 +8,8 @@ namespace AquaConsole
     {
         public static void Help(string RequestedCommand)
         {
-            switch (RequestedCommand)
-            {
-
-
-
-
-                default:
-                    
-
                     var offset = CommandManager.HelpText.Max(s => s.Length / 2);
                     var formatString = "{0,-" + offset + "}     {1}";
-
                     Console.WriteLine(formatString, "=======", " =====");
                     Console.WriteLine(formatString, "Command", " Usage");
                     Console.WriteLine(formatString, "=======", " =====");
@@ -31,24 +21,24 @@ namespace AquaConsole
                         string help = helptext.Remove(command.IndexOf(command), command.Length);
                         Console.WriteLine(formatString, command, help);
                     }
-                    Console.ResetColor();
+                    Console.ResetColor();                    
+            }        
 
-                    break;
-            }
-
-        }
         public static void Version()
         {
             Console.WriteLine(Program.ProgramVersion);
         }
+
         public static void Clear()
         {
             Console.Clear();
         }
+
         public static void Title(string title)
         {
             Console.Title = title;
         }
+
         public static void Cap()
         {
             if (Utility.IsUserAdministrator())
@@ -93,6 +83,7 @@ namespace AquaConsole
             Utility.ExecuteCommandSync("dir");
         }
 
+
         public static void cmd(string command)
         {
             if (!string.IsNullOrEmpty(command))
@@ -100,8 +91,6 @@ namespace AquaConsole
             else
                 Utility.ErrorWriteLine("Error: no argument's were supplied.");
         }
-
-
 
     }
 }

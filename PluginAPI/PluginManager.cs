@@ -11,11 +11,8 @@ namespace PluginAPI
     /// This is the interface you will use to register with the console
     /// </summary>
     public interface AquaPlugin
-    {
-
-        
-
-        
+    {   
+                        
         /// <summary>
         /// return your plugin name here
         /// </summary>
@@ -162,7 +159,5 @@ namespace PluginAPI
                 }                
             }
         }
-
-
     }
 }

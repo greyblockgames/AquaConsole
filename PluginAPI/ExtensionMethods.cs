@@ -8,7 +8,6 @@ namespace PluginAPI
 {
     public static class ExtensionMethods
     {
-
         /// <summary>
         /// Removes all whitespace characters from the string
         /// </summary>
@@ -20,7 +19,5 @@ namespace PluginAPI
                 .Where(c => !Char.IsWhiteSpace(c))
                 .ToArray());
         }
-
-
     }
 }

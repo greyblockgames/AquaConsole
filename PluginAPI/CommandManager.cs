@@ -20,13 +20,12 @@ namespace PluginAPI
         public static Dictionary<String, Action<string>> CommandDictionary = new Dictionary<String, Action<string>>();
 
         /// <summary>
-        /// Register your help text to this dictionary, Example: CommandManager.HelpText.Add("help                       Displays this help text");
+        /// Register your help text to this dictionary, Example: CommandManager.HelpText.Add("help Displays this help text");
         /// </summary>
         public static List<string> HelpText = new List<string>();
 
 
         
-
 
         /// <summary>
         /// Runs the specified command
@@ -44,8 +43,6 @@ namespace PluginAPI
             {
                 Utility.ErrorWriteLine("Unknown command " + commandname);
             }
-
-
         }
 
         /// <summary>
