@@ -7,22 +7,38 @@ using System.Threading.Tasks;
 namespace PluginAPI
 {
 
-    /// <summary>
-    /// The class responsible for registering and processing commands
-    /// </summary>
+    public interface ICommand
+    {
+        string Command
+        {
+            get;
+        }
+
+        string HelpText
+        {
+            get;
+        }
+
+        void CommandMethod();
+    }
+
+
+
+
+    
     public class CommandManager
     {
-        //Creates a dictionary for all the commands
-
-        /// <summary>
-        /// Register your commands to this dictionary, Example: CommandManager.CommandDictionary.Add("help", (p) => { /* use p to compute something*/ });
-        /// </summary>
-        public static Dictionary<String, Action<string>> CommandDictionary = new Dictionary<String, Action<string>>();
-
-        /// <summary>
-        /// Register your help text to this dictionary, Example: CommandManager.HelpText.Add("help Displays this help text");
-        /// </summary>
+        
+        public static Dictionary<String, Action<string>> CommandDictionary = new Dictionary<String, Action<string>>();        
         public static List<string> HelpText = new List<string>();
+
+        public static void LoadCommands()
+        {
+            foreach (ICommand item in ICommand)
+            {
+                Console.WriteLine(item);
+            }
+        }
 
 
         
@@ -45,17 +61,6 @@ namespace PluginAPI
             }
         }
 
-        /// <summary>
-        /// Generates and/or returns the help menu.
-        /// </summary>
-        public static void GenerateHelpMenu()
-        {
-
-            foreach (string helptext in CommandManager.HelpText)
-            {
-                
-            }
-
-        }
+       
     }
 }

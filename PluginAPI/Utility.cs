@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -185,13 +186,35 @@ namespace PluginAPI
             return isAdmin;
         }
 
+        /// <summary>
+        /// Skips a line in the console
+        /// </summary>
         private static void SkipALine()
         {
             Console.WriteLine("");
         }
 
+        /// <summary>
+        /// Returns whether or not a class is real
+        /// </summary>
+        /// <param name="testType"></param>
+        /// <returns></returns>
+        public static bool IsRealClass(Type testType)
+        {
+            return !(testType.IsAbstract || testType.IsGenericTypeDefinition || testType.IsInterface);
+        }
 
-       
+        /// <summary>
+        /// Returns all types in the current AppDomain implementing the interface or inheriting the type. 
+        /// </summary>
+        public static IEnumerable<Type> TypesImplementingInterface(Type desiredType)
+        {
+            return AppDomain
+                   .CurrentDomain
+                   .GetAssemblies()
+                   .SelectMany(assembly => assembly.GetTypes())
+                   .Where(type => desiredType.IsAssignableFrom(type));
+        }
 
 
     }

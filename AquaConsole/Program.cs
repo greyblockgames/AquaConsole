@@ -40,6 +40,7 @@ namespace AquaConsole
         {
             RegisterCommands();
             PluginAPI.PluginManager.loadPlugins("plugins");
+            PluginAPI.CommandManager.LoadCommands(ICommand);
             Environment.CurrentDirectory = "C:/";
             if (!Utility.IsUserAdministrator())
                 Utility.ErrorWriteLine("Warning, Admin priveleges not detected, not all commands will work!");

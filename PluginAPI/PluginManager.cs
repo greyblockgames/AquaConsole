@@ -10,14 +10,14 @@ namespace PluginAPI
     /// <summary>
     /// This is the interface you will use to register with the console
     /// </summary>
-    public interface AquaPlugin
-    {   
-                        
+    public interface IPlugin
+    {
+
         /// <summary>
         /// return your plugin name here
         /// </summary>
         string name
-        {            
+        {
             get;
         }
 
@@ -71,7 +71,7 @@ namespace PluginAPI
                 }
 
                 //Load all files
-                Type pluginType = typeof(AquaPlugin);
+                Type pluginType = typeof(IPlugin);
                 ICollection<Type> pluginTypes = new List<Type>();
                 foreach (Assembly assembly in assemblies)
                 {
@@ -96,21 +96,21 @@ namespace PluginAPI
                 }
 
                 //create instance of files
-                ICollection<AquaPlugin> plugins = new List<AquaPlugin>(pluginTypes.Count);
+                ICollection<IPlugin> plugins = new List<IPlugin>(pluginTypes.Count);
                 foreach (Type type in pluginTypes)
                 {
-                    AquaPlugin plugin = (AquaPlugin)Activator.CreateInstance(type);
+                    IPlugin plugin = (IPlugin)Activator.CreateInstance(type);
                     plugins.Add(plugin);
                 }
 
 
-                var _Plugins = new Dictionary<string, AquaPlugin>();
+                var _Plugins = new Dictionary<string, IPlugin>();
 
 
                 foreach (var item in plugins)
                 {
                     _Plugins.Add(item.name, item);
-                    AquaPlugin plugin = _Plugins[item.name];
+                    IPlugin plugin = _Plugins[item.name];
                     try { plugin.PreloadMethod(); }
                     catch (NotImplementedException)
                     {
@@ -125,7 +125,7 @@ namespace PluginAPI
 
                 foreach (var item in plugins)
                 {
-                    AquaPlugin plugin = _Plugins[item.name];
+                    IPlugin plugin = _Plugins[item.name];
 
 
                     try { plugin.LoadMethod(); }
@@ -142,7 +142,7 @@ namespace PluginAPI
 
                 foreach (var item in plugins)
                 {
-                    AquaPlugin plugin = _Plugins[item.name];
+                    IPlugin plugin = _Plugins[item.name];
                     try
                     {
                         plugin.PostLoadMethod();
@@ -156,7 +156,7 @@ namespace PluginAPI
                         Utility.ErrorWriteLine(e.ToString());
                         Console.WriteLine("");
                     }
-                }                
+                }
             }
         }
     }
