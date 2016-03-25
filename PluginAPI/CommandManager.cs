@@ -6,32 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PluginAPI
-{
-
-    public interface ICommand
-    {
-        string Command
-        {
-            get;
-        }
-
-        string HelpText
-        {
-            get;
-        }
-
-        void CommandMethod(string p);
-    }
-
-
-
-
-
+{    
+    
     public class CommandManager
     {
 
-        readonly static Dictionary<String, Action<string>> CommandDictionary = new Dictionary<String, Action<string>>();
-        readonly static List<string> HelpText = new List<string>();
+        private static Dictionary<String, Action<string>> CommandDictionary = new Dictionary<String, Action<string>>();
+        public static List<string> HelpText = new List<string>();
 
         public static void LoadCommands()
         {

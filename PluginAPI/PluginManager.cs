@@ -6,36 +6,7 @@ using System.IO;
 using System.Reflection;
 
 namespace PluginAPI
-{
-    /// <summary>
-    /// This is the interface you will use to register with the console
-    /// </summary>
-    public interface IPlugin
-    {
-
-        /// <summary>
-        /// return your plugin name here
-        /// </summary>
-        string name
-        {
-            get;
-        }
-
-        /// <summary>
-        /// Preload method, Anything that should be executed first on plugin load, should go here.
-        /// </summary>
-        void PreloadMethod();
-
-        /// <summary>
-        /// Main loading method, Most things should go here.
-        /// </summary>
-        void LoadMethod();
-
-        /// <summary>
-        /// Postload method, Anything that should be executed last on plugin load, should go here.
-        /// </summary>
-        void PostLoadMethod();
-    }
+{  
 
     /// <summary>
     /// The class responsible for all things plugins!
