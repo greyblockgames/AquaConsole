@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HackTool.Commands
+namespace AquaConsole.Commands
 {
     class version : ICommand
     {

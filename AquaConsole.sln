@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AquaConsole", "AquaConsole\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginAPI", "PluginAPI\PluginAPI.csproj", "{D1DD1428-032D-4CF2-BA1B-D819F92325C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin", "TestPlugin\TestPlugin.csproj", "{7768A7EF-6AFB-47AF-89E5-5F9164C5F11A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D1DD1428-032D-4CF2-BA1B-D819F92325C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1DD1428-032D-4CF2-BA1B-D819F92325C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1DD1428-032D-4CF2-BA1B-D819F92325C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7768A7EF-6AFB-47AF-89E5-5F9164C5F11A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7768A7EF-6AFB-47AF-89E5-5F9164C5F11A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7768A7EF-6AFB-47AF-89E5-5F9164C5F11A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7768A7EF-6AFB-47AF-89E5-5F9164C5F11A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

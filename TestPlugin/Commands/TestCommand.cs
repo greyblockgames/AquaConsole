@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AquaConsole.Commands
+namespace TestPlugin.Commands
 {
-    class clear_screen : ICommand
+    class TestCommand : ICommand
     {
         public string Command
         {
             get
             {
-                return "cls";
+                return "Hello World";
             }
         }
 
@@ -21,13 +21,13 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "Clears the console";
+                return "this is a test command from the test plugin";
             }
         }
 
         public void CommandMethod(string p)
         {
-            Console.Clear();
+            Utility.NotifyWriteLine("Hello World!");
         }
     }
 }
