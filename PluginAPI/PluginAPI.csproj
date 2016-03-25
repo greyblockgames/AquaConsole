@@ -43,11 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandManager.cs" />
-    <Compile Include="DateEvents.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Interfaces.cs" />
-    <Compile Include="PluginManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
