@@ -21,9 +21,22 @@ namespace AquaConsole
                 {
                     ICommand executor = Activator.CreateInstance(t) as ICommand;
 
-                    HelpText.Add(executor.Command.ToLower() + " " + executor.HelpText.ToLower());
-                    CommandDictionary.Add(executor.Command.ToLower(), (p) => { executor.CommandMethod(p); });
+                    if (!string.IsNullOrEmpty(executor.Command) && (!string.IsNullOrEmpty(executor.HelpText)))
+                        HelpText.Add(executor.Command.ToLower().Replace(" ", null) + " " + executor.HelpText.ToLower());
+
+                    if (!string.IsNullOrEmpty(executor.Command))
+                        CommandDictionary.Add(executor.Command.ToLower().Replace(" ", null), (p) => { executor.CommandMethod(p); });
                 }
+            }
+
+            foreach (Type type in PluginManager.commandTypes)
+            {
+                ICommand executor = Activator.CreateInstance(type) as ICommand;
+                if (!string.IsNullOrEmpty(executor.Command) && (!string.IsNullOrEmpty(executor.HelpText)))
+                    HelpText.Add(executor.Command.ToLower().Replace(" ", null) + " " + executor.HelpText.ToLower());
+
+                if (!string.IsNullOrEmpty(executor.Command))
+                    CommandDictionary.Add(executor.Command.ToLower().Replace(" ", null), (p) => { executor.CommandMethod(p); });
             }
         }
 

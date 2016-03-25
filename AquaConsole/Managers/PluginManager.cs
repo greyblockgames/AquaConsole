@@ -9,6 +9,9 @@ namespace AquaConsole
 {
     class PluginManager
     {
+
+        public static ICollection<Type> commandTypes = new List<Type>();
+
         public static void loadPlugins(string pluginFolder)
         {
             //Calls DateEvents for date specific events
@@ -26,6 +29,7 @@ namespace AquaConsole
             if (dllFileNames != null)
             {
                 ICollection<Assembly> assemblies = new List<Assembly>(dllFileNames.Length);
+
                 foreach (string dllFile in dllFileNames)
                 {
                     AssemblyName an = AssemblyName.GetAssemblyName(dllFile);
@@ -36,6 +40,7 @@ namespace AquaConsole
                 //Load all files
                 Type pluginType = typeof(IPlugin);
                 ICollection<Type> pluginTypes = new List<Type>();
+
                 foreach (Assembly assembly in assemblies)
                 {
                     if (assembly != null)
@@ -53,6 +58,13 @@ namespace AquaConsole
                                 {
                                     pluginTypes.Add(type);
                                 }
+                                else
+                                {
+                                    if (type.GetInterface(typeof(ICommand).FullName) != null)
+                                    {
+                                        commandTypes.Add(type);
+                                    }
+                                }
                             }
                         }
                     }
@@ -65,6 +77,8 @@ namespace AquaConsole
                     IPlugin plugin = (IPlugin)Activator.CreateInstance(type);
                     plugins.Add(plugin);
                 }
+
+
 
 
                 var _Plugins = new Dictionary<string, IPlugin>();
@@ -122,7 +136,7 @@ namespace AquaConsole
                 }
             }
         }
-        
+
     }
 }
 
