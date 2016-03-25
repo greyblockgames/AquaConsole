@@ -1,31 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PluginAPI
 {
 
-    /// <summary>
-    /// The class responsible for registering and processing commands
-    /// </summary>
+    public interface ICommand
+    {
+        string Command
+        {
+            get;
+        }
+
+        string HelpText
+        {
+            get;
+        }
+
+        void CommandMethod(string p);
+    }
+
+
+
+
+
     public class CommandManager
     {
-        //Creates a dictionary for all the commands
 
-        /// <summary>
-        /// Register your commands to this dictionary, Example: CommandManager.CommandDictionary.Add("help", (p) => { /* use p to compute something*/ });
-        /// </summary>
-        public static Dictionary<String, Action<string>> CommandDictionary = new Dictionary<String, Action<string>>();
+        readonly static Dictionary<String, Action<string>> CommandDictionary = new Dictionary<String, Action<string>>();
+        readonly static List<string> HelpText = new List<string>();
 
-        /// <summary>
-        /// Register your help text to this dictionary, Example: CommandManager.HelpText.Add("help Displays this help text");
-        /// </summary>
-        public static List<string> HelpText = new List<string>();
+        public static void LoadCommands()
+        {
+            foreach (Type t in Assembly.GetCallingAssembly().GetTypes())
+            {
+                if (t.GetInterface("ICommand") != null)
+                {
+                    ICommand executor = Activator.CreateInstance(t) as ICommand;
 
 
-        
+                    HelpText.Add(executor.Command.ToLower() + " " + executor.HelpText.ToLower());
+                    CommandDictionary.Add(executor.Command.ToLower(), (p) => { executor.CommandMethod(p); });
+                }
+            }
+        }
+
+
+
 
         /// <summary>
         /// Runs the specified command
@@ -35,7 +59,7 @@ namespace PluginAPI
         public static void RunCommand(string commandname, string parameter)
         {
             //Checks if the dictionary contains the command, otherwise output unknown command error
-            if (CommandDictionary.ContainsKey(commandname))
+            if (CommandDictionary.ContainsKey(commandname.ToLower()))
             {
                 CommandDictionary[commandname](parameter);
             }
@@ -45,17 +69,6 @@ namespace PluginAPI
             }
         }
 
-        /// <summary>
-        /// Generates and/or returns the help menu.
-        /// </summary>
-        public static void GenerateHelpMenu()
-        {
 
-            foreach (string helptext in CommandManager.HelpText)
-            {
-                
-            }
-
-        }
     }
 }
