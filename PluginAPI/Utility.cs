@@ -215,6 +215,17 @@ namespace PluginAPI
                    .SelectMany(assembly => assembly.GetTypes())
                    .Where(type => desiredType.IsAssignableFrom(type));
         }
+
+        /// <summary>
+        /// Restarts the program
+        /// </summary>
+        public static void RestartProgram()
+        {
+            System.Diagnostics.Process.Start(System.Reflection.Assembly.GetEntryAssembly().Location);
+
+            // Closes the current process
+            Environment.Exit(0);
+        }
     }
 
 

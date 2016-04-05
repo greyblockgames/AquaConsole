@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\restart.cs" />
     <Compile Include="Managers\CommandManager.cs" />
     <Compile Include="Commands\cap.cs" />
     <Compile Include="Commands\cd.cs" />

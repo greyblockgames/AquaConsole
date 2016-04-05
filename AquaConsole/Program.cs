@@ -9,7 +9,7 @@ namespace AquaConsole
     {
         public static Boolean quitNow = false;
 
-        public static string ProgramVersion = "AquaDark Console [Version 1.1.0100]";
+        public static string ProgramVersion = "AquaDark Console [Version 1.3.0100]";
 
         static void Main(string[] args)
         {
