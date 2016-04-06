@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestPlugin.Commands
+namespace PluginDownloader
 {
-    class TestCommand : ICommand
+    public class Class1 : ICommand
     {
         public string Command
         {
             get
             {
-                return "Hello World";
+                return "command manager";
             }
         }
 
@@ -21,13 +21,13 @@ namespace TestPlugin.Commands
         {
             get
             {
-                return "this is a test command from the test plugin";
+                return "HelpText";
             }
         }
 
         public void CommandMethod(string p)
         {
-            Utility.NotifyWriteLine("Hello World!");
+            Utility.NotifyWriteLine("test");
         }
     }
 }
