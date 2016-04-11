@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PluginDownloader
+namespace PluginDownloader.Commands
 {
-    public class Class1 : ICommand
+    class PluginManager : ICommand
     {
         public string Command
         {
             get
             {
-                return "command manager";
+                return "PM";
             }
         }
 
@@ -21,13 +21,13 @@ namespace PluginDownloader
         {
             get
             {
-                return "HelpText";
+                return "opens the plugin management interface";
             }
         }
 
         public void CommandMethod(string p)
         {
-            Utility.NotifyWriteLine("test");
+            xmlLoader.Load(p);
         }
     }
 }

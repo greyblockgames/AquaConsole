@@ -170,11 +170,15 @@ namespace PluginAPI
                 System.Security.Principal.WindowsPrincipal principal = new System.Security.Principal.WindowsPrincipal(user);
                 isAdmin = principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
             }
+#pragma warning disable 0168
             catch (UnauthorizedAccessException ex)
+#pragma warning restore 0168
             {
                 isAdmin = false;
             }
+#pragma warning disable 0168
             catch (Exception ex)
+#pragma warning restore 0168
             {
                 isAdmin = false;
             }
