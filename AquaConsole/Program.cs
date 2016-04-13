@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Linq;
 using PluginAPI;
+using System.IO;
+
+using AquaConsole.Managers;
 
 namespace AquaConsole
 {
@@ -38,10 +41,16 @@ namespace AquaConsole
 
         private static void Setup()
         {
+            if (!Utility.FileOrDirectoryExists("/plugins/"))
+                Directory.CreateDirectory("/plugins");
+
             
+
             PluginManager.loadPlugins("plugins");
             CommandManager.LoadCommands();
+            NoticeManager.ReadNotice();
             Environment.CurrentDirectory = "C:/";
+
             if (!Utility.IsUserAdministrator())
                 Utility.ErrorWriteLine("Warning, Admin priveleges not detected, not all commands will work!");
             Console.Title = "AquaDark Console";
@@ -51,7 +60,7 @@ namespace AquaConsole
             CommandManager.HelpText.Sort();
         }
 
-       
+
 
 
 

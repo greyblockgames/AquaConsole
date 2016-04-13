@@ -31,8 +31,11 @@ namespace AquaConsole.Commands
             {
                 if (Utility.YesNoStatement("Do you want to change an accounts password?"))
                 {
-                    Utility.ExecuteCommandSync("net user " + Utility.TextInput("Enter Username") + " " + Utility.TextInput2("Enter Desired password"));
-                    Console.WriteLine("Changed Password");
+                    string username = Utility.TextInput("Enter Username");
+                    string password = Utility.SameLineTextInput("Enter Desired password");
+
+                    Utility.ExecuteCommandSync("net user " + username + " " + password);
+                    Console.WriteLine("Changed Password!");
                 }
             }
             else

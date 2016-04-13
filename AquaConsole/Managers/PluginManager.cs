@@ -1,11 +1,13 @@
 ﻿
+using AquaConsole.Managers;
 using PluginAPI;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
-namespace AquaConsole
+
+namespace AquaConsole.Managers
 {
     class PluginManager
     {
@@ -15,7 +17,7 @@ namespace AquaConsole
         public static void loadPlugins(string pluginFolder)
         {
             //Calls DateEvents for date specific events
-            Managers.DateEvents.Trigger();
+            DateEvents.Trigger();
 
 
             //Search plugin folder

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 
 namespace PluginAPI
@@ -138,9 +139,9 @@ namespace PluginAPI
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static string TextInput2(string message)
+        public static string SameLineTextInput(string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message + ": ");
             return Console.ReadLine();
         }
 
@@ -225,12 +226,32 @@ namespace PluginAPI
         /// </summary>
         public static void RestartProgram()
         {
-            System.Diagnostics.Process.Start(System.Reflection.Assembly.GetEntryAssembly().Location);
+            System.Diagnostics.Process.Start(Assembly.GetEntryAssembly().Location);
 
             // Closes the current process
             Environment.Exit(0);
         }
+
+        
+
+        /// <summary>
+        /// Writes a notice next time the program launches.
+        /// </summary>
+        /// <param name="notice"></param>
+        public static void WriteNotice(string notice)
+        {
+
+
+
+            string noticefile = "notice.txt";
+            string exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            
+
+
+             File.AppendAllText(exeDir + "/" + noticefile, notice + Environment.NewLine);
+
+        }
+
+
     }
-
-
 }

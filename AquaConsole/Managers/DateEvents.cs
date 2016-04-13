@@ -11,8 +11,9 @@ namespace AquaConsole.Managers
     {
         public static void Trigger()
         {
-            DateTime LukasBirthday = new DateTime(DateTime.Today.Year, 3, 29);
 
+            //Lukas birthday event
+            DateTime LukasBirthday = new DateTime(DateTime.Today.Year, 3, 29);
             if (LukasBirthday == DateTime.Today)
             {
                 Console.Title = "Happy birthday LUKAS";
@@ -30,6 +31,8 @@ namespace AquaConsole.Managers
                 System.Threading.Thread.Sleep(100);
                 Console.Clear();
             }
+
+
         }
 
         private static void HappyBirthdaySong()

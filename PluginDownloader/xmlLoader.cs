@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -12,7 +13,7 @@ namespace PluginDownloader
     {
         public static void Load(string p)
         {
-            
+
 
             List<string> PluginName = new List<string>();
             List<string> PluginAuthor = new List<string>();
@@ -40,7 +41,7 @@ namespace PluginDownloader
             //Sorts list
             PluginHelpText.Sort();
 
-            Console.Clear();            
+            Console.Clear();
 
 
 
@@ -49,40 +50,104 @@ namespace PluginDownloader
             Console.WindowWidth = Console.LargestWindowWidth;
             Console.WindowHeight = Console.LargestWindowHeight;
 
-            var consoleWnd = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;           
+            var consoleWnd = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
             Imports.SetWindowPos(consoleWnd, 0, 0, 0, 0, 0, Imports.SWP_NOSIZE | Imports.SWP_NOZORDER);
 
             //Begins creating menu
             var offset = PluginHelpText.Max(s => s.Length / 2);
             var formatString = "{0,-" + offset + "}     {1,-" + offset + "}    {2}";
-          
 
 
-            Console.WriteLine(formatString, "=====",  "===========", "======");
-            Console.WriteLine(formatString, "Name ",  "Description", "Author");
-            Console.WriteLine(formatString, "=====",  "===========", "======");
+
+            Console.WriteLine(formatString, "  ======", "=============", "========");
+            Console.WriteLine(formatString, "   Name ", " Description", " Author");
+            Console.WriteLine(formatString, "  ======", "=============", "========");
 
 
             int counter = 0;
             foreach (string name in PluginName)
             {
-                counter++;             
+                //TODO: Check if plugin already exists
+
+                counter++;
                 Console.WriteLine(formatString, counter.ToString() + ") " + PluginName[counter - 1], PluginDescription[counter - 1], PluginAuthor[counter - 1]);
             }
 
+            counter++;
+            Console.WriteLine(formatString, counter.ToString() + ") ", "Exits the menu", null);
 
-            //Takes Input
-            Console.Write("Please Make A Selection: ");
-            string input = Console.ReadLine();
-            int number = 9;
-            int.TryParse(input, out number);
-
-            if (number <= PluginName.Count)
-                Console.WriteLine("Great success!!!" + number.ToString());
+            //Takes Input   
+            int selection;
+        selection:
+            Console.WriteLine();
+            int.TryParse(Utility.SameLineTextInput("Please make a selection"), out selection);
+            if (selection == PluginName.Count + 1)
+            {
+                goto exit;
+            }
+            else if (selection < 1 || selection >= PluginName.Count + 1)
+            {
+                Utility.ErrorWriteLine("Please ensure that your selection is in range and try again!");
+                goto selection;
+            }
             else
-                Console.WriteLine(":(" + number.ToString());
+            {
+
+
+                //Try download
+                try
+                {
+                    string updurl = PluginURL[selection - 1];
+                    WebClient WC = new WebClient();
+                    WC.DownloadProgressChanged += new DownloadProgressChangedEventHandler(WC_DownloadProgressChanged);
+                    WC.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(WC_DownloadFileCompleted);
+                    WC.DownloadFileAsync(new Uri(updurl), "/plugins/" + PluginName[selection - 1]);
+
+
+                    //TODO: Make note file
+                    Utility.WriteNotice("Plugin " + PluginName[selection - 1] + " has been installed successfully!");
+
+
+                    //Restarts application to load plugin
+                    Utility.RestartProgram();
+                }
+                catch (Exception ex)
+                {
+                    Console.Clear();
+                    Console.WriteLine(ex.Message);
+                }
+
 
 
             }
+
+
+
+
+        exit:
+            Console.Clear();
+
+
+        }
+
+        static void WC_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            if (e.UserState != e.Error)
+            {
+                Console.Clear();
+                Console.WriteLine("Update applied successfully!");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
+            else { }
+        }
+
+        static void WC_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            Console.Clear();
+            Console.WriteLine("Downloading Updated files...");
+            Console.WriteLine(e.ProgressPercentage.ToString() + "%");
+        }
+
     }
 }

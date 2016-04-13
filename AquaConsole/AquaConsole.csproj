@@ -7,7 +7,7 @@
     <ProjectGuid>{508952B7-569B-4729-A4E0-EA774D56583D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HackTool</RootNamespace>
+    <RootNamespace>AquaConsole</RootNamespace>
     <AssemblyName>HackTool</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -76,8 +76,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\NoticeTest.cs" />
     <Compile Include="Commands\restart.cs" />
-    <Compile Include="GlobalVariables.cs" />
     <Compile Include="Managers\CommandManager.cs" />
     <Compile Include="Commands\cap.cs" />
     <Compile Include="Commands\cd.cs" />
@@ -90,6 +90,7 @@
     <Compile Include="Commands\title.cs" />
     <Compile Include="Commands\version.cs" />
     <Compile Include="Managers\DateEvents.cs" />
+    <Compile Include="Managers\NoticeManager.cs" />
     <Compile Include="Managers\PluginManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
