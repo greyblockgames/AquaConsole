@@ -18,7 +18,7 @@ namespace AquaConsole.Managers
             get
             {
                 return privateHelpText;
-            }            
+            }
         }
         private static Dictionary<String, Action<string>> CommandDictionary = new Dictionary<String, Action<string>>();
 
@@ -41,11 +41,20 @@ namespace AquaConsole.Managers
             foreach (Type type in PluginManager.commandTypes)
             {
                 ICommand executor = Activator.CreateInstance(type) as ICommand;
-                if (!string.IsNullOrEmpty(executor.Command) && (!string.IsNullOrEmpty(executor.HelpText)))
-                    privateHelpText.Add(executor.Command.ToLower().Replace(" ", null) + " " + executor.HelpText.ToLower());
 
-                if (!string.IsNullOrEmpty(executor.Command))
-                    CommandDictionary.Add(executor.Command.ToLower().Replace(" ", null), (p) => { executor.CommandMethod(p); });
+
+                try
+                {
+                    if (!string.IsNullOrEmpty(executor.Command))
+                        CommandDictionary.Add(executor.Command.ToLower().Replace(" ", null), (p) => { executor.CommandMethod(p); });
+                    if (!string.IsNullOrEmpty(executor.Command) && (!string.IsNullOrEmpty(executor.HelpText)))
+                        privateHelpText.Add(executor.Command.ToLower().Replace(" ", null) + " " + executor.HelpText.ToLower());
+                }
+                catch
+                {
+
+                }
+
             }
         }
 
