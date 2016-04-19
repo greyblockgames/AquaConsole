@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Security.Permissions;
 using System.Threading;
 
 namespace PluginAPI
@@ -138,9 +140,9 @@ namespace PluginAPI
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static string TextInput2(string message)
+        public static string SameLineTextInput(string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message + ": ");
             return Console.ReadLine();
         }
 
@@ -170,11 +172,15 @@ namespace PluginAPI
                 System.Security.Principal.WindowsPrincipal principal = new System.Security.Principal.WindowsPrincipal(user);
                 isAdmin = principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
             }
+#pragma warning disable 0168
             catch (UnauthorizedAccessException ex)
+#pragma warning restore 0168
             {
                 isAdmin = false;
             }
+#pragma warning disable 0168
             catch (Exception ex)
+#pragma warning restore 0168
             {
                 isAdmin = false;
             }
@@ -215,7 +221,49 @@ namespace PluginAPI
                    .SelectMany(assembly => assembly.GetTypes())
                    .Where(type => desiredType.IsAssignableFrom(type));
         }
+
+        /// <summary>
+        /// Restarts the program
+        /// </summary>
+        public static void RestartProgram()
+        {
+            System.Diagnostics.Process.Start(Assembly.GetEntryAssembly().Location);
+            // Closes the current process
+            Environment.Exit(0);
+        }
+
+
+
+        /// <summary>
+        /// Writes a notice next time the program launches.
+        /// </summary>
+        /// <param name="notice"></param>
+        public static void WriteNotice(string notice)
+        {
+
+
+
+            string noticefile = "notice.nf";
+            string exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+
+
+            File.AppendAllText(exeDir + "/" + noticefile, notice + Environment.NewLine);
+
+        }
+
+
+        /// <summary>
+        /// Sleeps for the specified amount of time in seconds.
+        /// </summary>
+        /// <param name="seconds"></param>
+        public static void Wait(float seconds)
+        {
+            int waittime = Convert.ToInt32(seconds * 1000F);
+            Thread.Sleep((waittime));
+            Console.WriteLine(waittime.ToString());
+        }
+
+
     }
-
-
 }

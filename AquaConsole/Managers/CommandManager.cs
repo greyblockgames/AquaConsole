@@ -6,11 +6,20 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AquaConsole
+
+
+namespace AquaConsole.Managers
 {
     class CommandManager
     {
-        public static List<string> HelpText = new List<string>();
+        private static List<string> privateHelpText = new List<string>();
+        public static List<string> HelpText
+        {
+            get
+            {
+                return privateHelpText;
+            }
+        }
         private static Dictionary<String, Action<string>> CommandDictionary = new Dictionary<String, Action<string>>();
 
         public static void LoadCommands()
@@ -22,7 +31,7 @@ namespace AquaConsole
                     ICommand executor = Activator.CreateInstance(t) as ICommand;
 
                     if (!string.IsNullOrEmpty(executor.Command) && (!string.IsNullOrEmpty(executor.HelpText)))
-                        HelpText.Add(executor.Command.ToLower().Replace(" ", null) + " " + executor.HelpText.ToLower());
+                        privateHelpText.Add(executor.Command.ToLower().Replace(" ", null) + " " + executor.HelpText.ToLower());
 
                     if (!string.IsNullOrEmpty(executor.Command))
                         CommandDictionary.Add(executor.Command.ToLower().Replace(" ", null), (p) => { executor.CommandMethod(p); });
@@ -32,11 +41,20 @@ namespace AquaConsole
             foreach (Type type in PluginManager.commandTypes)
             {
                 ICommand executor = Activator.CreateInstance(type) as ICommand;
-                if (!string.IsNullOrEmpty(executor.Command) && (!string.IsNullOrEmpty(executor.HelpText)))
-                    HelpText.Add(executor.Command.ToLower().Replace(" ", null) + " " + executor.HelpText.ToLower());
 
-                if (!string.IsNullOrEmpty(executor.Command))
-                    CommandDictionary.Add(executor.Command.ToLower().Replace(" ", null), (p) => { executor.CommandMethod(p); });
+
+                try
+                {
+                    if (!string.IsNullOrEmpty(executor.Command))
+                        CommandDictionary.Add(executor.Command.ToLower().Replace(" ", null), (p) => { executor.CommandMethod(p); });
+                    if (!string.IsNullOrEmpty(executor.Command) && (!string.IsNullOrEmpty(executor.HelpText)))
+                        privateHelpText.Add(executor.Command.ToLower().Replace(" ", null) + " " + executor.HelpText.ToLower());
+                }
+                catch
+                {
+
+                }
+
             }
         }
 
@@ -46,7 +64,8 @@ namespace AquaConsole
             //Checks if the dictionary contains the command, otherwise output unknown command error
             if (CommandDictionary.ContainsKey(commandname.ToLower()))
             {
-                CommandDictionary[commandname](parameter);
+
+                CommandDictionary[commandname.ToLower()](parameter);
             }
             else
             {

@@ -1,4 +1,5 @@
-﻿using PluginAPI;
+﻿using AquaConsole.Managers;
+using PluginAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,10 @@ namespace AquaConsole.Commands
 
         public void CommandMethod(string p)
         {
+
+            
+
+
             var offset = CommandManager.HelpText.Max(s => s.Length / 2);
             var formatString = "{0,-" + offset + "}     {1}";
             Console.WriteLine(formatString, "=======", " =====");
