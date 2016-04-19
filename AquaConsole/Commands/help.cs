@@ -22,7 +22,7 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "Displays this help text";
+                return strings.helphelp;
             }
         }
 
@@ -34,9 +34,9 @@ namespace AquaConsole.Commands
 
             var offset = CommandManager.HelpText.Max(s => s.Length / 2);
             var formatString = "{0,-" + offset + "}     {1}";
-            Console.WriteLine(formatString, "=======", " =====");
-            Console.WriteLine(formatString, "Command", " Usage");
-            Console.WriteLine(formatString, "=======", " =====");
+            Console.WriteLine(formatString, strings.helpmenucommandborder, " " + strings.helpmenuusageborder);
+            Console.WriteLine(formatString, strings.helpmenucommand, " " + strings.helpmenuusage);
+            Console.WriteLine(formatString, strings.helpmenucommandborder, " " + strings.helpmenuusageborder);
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             foreach (string helptext in CommandManager.HelpText)

@@ -21,7 +21,7 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "Returns a list of loaded plugins";
+                return strings.pluginshelp;
             }
         }
 

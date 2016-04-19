@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HackTool.Commands
+namespace AquaConsole.Commands
 {
     class restart : ICommand
     {
@@ -21,7 +21,7 @@ namespace HackTool.Commands
         {
             get
             {
-                return "restarts the application";
+                return strings.restarthelp;
             }
         }
 

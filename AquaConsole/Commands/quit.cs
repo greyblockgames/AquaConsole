@@ -22,7 +22,7 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "exits the program";
+                return strings.quithelp;
             }
         }
 

@@ -21,16 +21,16 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "Executes a command prompt command";
+                return strings.cmdhelp;
             }
         }
 
         public void CommandMethod(string p)
         {
-            if (!string.IsNullOrEmpty(p))
+            if (!string.IsNullOrWhiteSpace(p))
                 Utility.ExecuteCommandSync(p);
             else
-                Utility.ErrorWriteLine("Error: no argument's were supplied.");
+                Utility.ErrorWriteLine(strings.errornoargumentssupplied);
         }
     }
 }

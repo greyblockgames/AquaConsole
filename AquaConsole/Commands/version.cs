@@ -22,7 +22,7 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "version Display's Console Version";
+                return strings.versionhelp;
             }
         }
 

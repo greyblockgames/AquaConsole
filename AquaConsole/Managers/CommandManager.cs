@@ -64,12 +64,11 @@ namespace AquaConsole.Managers
             //Checks if the dictionary contains the command, otherwise output unknown command error
             if (CommandDictionary.ContainsKey(commandname.ToLower()))
             {
-
                 CommandDictionary[commandname.ToLower()](parameter);
             }
             else
             {
-                Utility.ErrorWriteLine("Unknown command " + commandname);
+                Utility.ErrorWriteLine(strings.unknowncommand + ": " + commandname);
             }
         }
 

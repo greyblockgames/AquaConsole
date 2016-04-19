@@ -21,7 +21,7 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "Clears the console";
+                return strings.clearhelp;
             }
         }
 

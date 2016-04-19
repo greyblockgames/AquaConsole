@@ -21,7 +21,7 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "Displays a list of files and subdirectories in a directory.";
+                return strings.dirhelp;
             }
         }
 

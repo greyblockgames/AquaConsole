@@ -21,21 +21,21 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "Injects an archive file into an image";
+                return strings.combinehelp;
             }
         }
 
         public void CommandMethod(string p)
         {
-            String image = Utility.TextInput("Please enter the name of the input image (with extension)");
-            String zip = Utility.TextInput("Please enter the name of the input archive (with extension)");
+            String image = Utility.TextInput(strings.combineiimage);
+            String zip = Utility.TextInput(strings.combineiarchive);
             if (Utility.FileOrDirectoryExists(image) && Utility.FileOrDirectoryExists(zip))
             {
-                String output = Utility.TextInput("Please enter a name for the output image (with extension)");
+                String output = Utility.TextInput(strings.combineoimage);
                 Utility.ExecuteCommandSync("copy / b " + image + " + " + zip + " " + output);
             }
             else
-                Utility.ErrorWriteLine("File(s) were not found, please try again...");
+                Utility.ErrorWriteLine(strings.fileswerenotfound);
         }
     }
 }

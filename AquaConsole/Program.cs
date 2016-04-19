@@ -12,7 +12,6 @@ namespace AquaConsole
     {
         public static Boolean quitNow = false;
 
-        public static string ProgramVersion = "AquaDark Console [Version 1.3.0100]";
 
         static void Main(string[] args)
         {
@@ -41,7 +40,7 @@ namespace AquaConsole
 
         private static void Setup()
         {
-            if (!Utility.FileOrDirectoryExists("/plugins/"))
+            if (!Utility.FileOrDirectoryExists("/plugins"))
             {
                 Directory.CreateDirectory("/plugins");
                 Console.WriteLine("created plugins folder");
@@ -66,10 +65,11 @@ namespace AquaConsole
 
 
             if (!Utility.IsUserAdministrator())
-                Utility.ErrorWriteLine("Warning, Admin priveleges not detected, not all commands will work!");
-            Console.Title = "AquaDark Console";
+                Utility.ErrorWriteLine(strings.warningnotadmin);
+
+            Console.Title = "AquaConsole";
             Console.WriteLine(ProgramVersion);
-            Console.WriteLine("<c> 2016 AquaDark Corporation. All rights reserved.");
+            Console.WriteLine(strings.copyrightGBG);
 
             CommandManager.HelpText.Sort();
         }

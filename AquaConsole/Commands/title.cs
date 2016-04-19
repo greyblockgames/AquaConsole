@@ -21,7 +21,7 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "Sets the console title";
+                return strings.titlehelp;
             }
         }
 

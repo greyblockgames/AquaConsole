@@ -21,7 +21,7 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "Changes current selected directory";
+                return strings.cdhelp;
             }
         }
 
@@ -30,7 +30,7 @@ namespace AquaConsole.Commands
             if (Utility.FileOrDirectoryExists(p))
                 Environment.CurrentDirectory = p;
             else
-                Utility.ErrorWriteLine("File Path Not Found");
+                Utility.ErrorWriteLine(strings.cderrorpathnotfound);
         }
     }
 }
