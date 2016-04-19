@@ -76,7 +76,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\NoticeTest.cs" />
+    <Compile Include="Commands\DownloadPM.cs" />
+    <Compile Include="Commands\plugins.cs" />
     <Compile Include="Commands\restart.cs" />
     <Compile Include="Managers\CommandManager.cs" />
     <Compile Include="Commands\cap.cs" />

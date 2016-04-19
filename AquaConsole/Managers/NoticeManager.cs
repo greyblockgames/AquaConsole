@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,16 +12,20 @@ namespace AquaConsole.Managers
 {
     public static class NoticeManager
     {
-        private static string noticefile = "notice.txt";
+        
         public static void ReadNotice()
         {
-            if (Utility.FileOrDirectoryExists(noticefile))
+
+            string noticefile = "notice.nf";
+            string exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            if (Utility.FileOrDirectoryExists(exeDir + "/" + noticefile))
             {
                 string line;
 
                 // Read the file and display it line by line.
                 StreamReader file =
-                   new System.IO.StreamReader(noticefile);
+                   new System.IO.StreamReader(exeDir + "/" + noticefile);
                 while ((line = file.ReadLine()) != null)
                 {
                     Utility.NotifyWriteLine(line);
@@ -28,7 +33,7 @@ namespace AquaConsole.Managers
 
                 file.Close();
 
-                File.Delete(noticefile);
+                File.Delete(exeDir + "/" + noticefile);
             }
         }
     }

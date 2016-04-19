@@ -48,7 +48,7 @@ namespace AquaConsole
             }
 
 
-
+            
             PluginManager.loadPlugins("plugins");
             Console.WriteLine("loaded plugins...");
             CommandManager.LoadCommands();
@@ -57,9 +57,13 @@ namespace AquaConsole
             Console.WriteLine("set current directory to C:/");
             Console.Clear();
 
-
             NoticeManager.ReadNotice();
-            
+
+
+
+
+
+
 
             if (!Utility.IsUserAdministrator())
                 Utility.ErrorWriteLine("Warning, Admin priveleges not detected, not all commands will work!");

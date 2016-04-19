@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HackTool.Commands
+namespace AquaConsole.Commands
 {
-    class NoticeTest : ICommand
+    class plugins : ICommand
     {
         public string Command
         {
             get
             {
-                return "noticetest";
+                return "plugins";
             }
         }
 
@@ -21,13 +21,17 @@ namespace HackTool.Commands
         {
             get
             {
-                return "Notice Test";
+                return "Returns a list of loaded plugins";
             }
         }
 
         public void CommandMethod(string p)
         {
-            Utility.WriteNotice(p);
+            foreach (string PluginName in GlobalLists.LoadedPlugins)
+            {
+                Console.Write(PluginName + ", ");                              
+            }
+            Console.WriteLine("");
         }
     }
 }

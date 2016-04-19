@@ -16,15 +16,18 @@ namespace AquaConsole.Managers
 
         public static void loadPlugins(string pluginFolder)
         {
+
+            string exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
             //Calls DateEvents for date specific events
             DateEvents.Trigger();
 
 
             //Search plugin folder
             string[] dllFileNames = null;
-            if (Directory.Exists(Environment.CurrentDirectory + "/" + pluginFolder + "/"))
+            if (Directory.Exists(exeDir + "/" + pluginFolder + "/"))
             {
-                dllFileNames = Directory.GetFiles(Environment.CurrentDirectory + "/" + pluginFolder + "/", "*.dll");
+                dllFileNames = Directory.GetFiles(exeDir + "/" + pluginFolder + "/", "*.dll");
             }
 
             //Load assemblies
@@ -34,6 +37,7 @@ namespace AquaConsole.Managers
 
                 foreach (string dllFile in dllFileNames)
                 {
+                    
                     AssemblyName an = AssemblyName.GetAssemblyName(dllFile);
                     Assembly assembly = Assembly.Load(an);
                     assemblies.Add(assembly);
@@ -90,6 +94,8 @@ namespace AquaConsole.Managers
                 {
                     _Plugins.Add(item.name, item);
                     IPlugin plugin = _Plugins[item.name];
+                    GlobalLists.LoadedPlugins.Add(item.name);
+
                     try { plugin.PreloadMethod(); }
                     catch (NotImplementedException)
                     {

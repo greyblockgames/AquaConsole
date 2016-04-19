@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security.Permissions;
 using System.Threading;
 
 namespace PluginAPI
@@ -227,12 +228,11 @@ namespace PluginAPI
         public static void RestartProgram()
         {
             System.Diagnostics.Process.Start(Assembly.GetEntryAssembly().Location);
-
             // Closes the current process
             Environment.Exit(0);
         }
 
-        
+
 
         /// <summary>
         /// Writes a notice next time the program launches.
@@ -243,13 +243,25 @@ namespace PluginAPI
 
 
 
-            string noticefile = "notice.txt";
+            string noticefile = "notice.nf";
             string exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            
 
 
-             File.AppendAllText(exeDir + "/" + noticefile, notice + Environment.NewLine);
 
+            File.AppendAllText(exeDir + "/" + noticefile, notice + Environment.NewLine);
+
+        }
+
+
+        /// <summary>
+        /// Sleeps for the specified amount of time in seconds.
+        /// </summary>
+        /// <param name="seconds"></param>
+        public static void Wait(float seconds)
+        {
+            int waittime = Convert.ToInt32(seconds * 1000F);
+            Thread.Sleep((waittime));
+            Console.WriteLine(waittime.ToString());
         }
 
 
