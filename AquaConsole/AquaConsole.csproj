@@ -76,9 +76,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\DownloadPM.cs" />
+    <Compile Include="Commands\PluginStore.cs" />
     <Compile Include="Commands\plugins.cs" />
     <Compile Include="Commands\restart.cs" />
+    <Compile Include="Commands\XmlGenerator.cs" />
     <Compile Include="Managers\CommandManager.cs" />
     <Compile Include="Commands\cap.cs" />
     <Compile Include="Commands\cd.cs" />

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace PluginDownloader.Commands
+namespace AquaConsole.Commands
 {
     class XmlGenerator : ICommand
     {

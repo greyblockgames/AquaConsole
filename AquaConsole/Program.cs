@@ -4,6 +4,7 @@ using PluginAPI;
 using System.IO;
 
 using AquaConsole.Managers;
+using System.Reflection;
 
 namespace AquaConsole
 {
@@ -12,7 +13,7 @@ namespace AquaConsole
     {
         public static Boolean quitNow = false;
 
-        public static string ProgramVersion = "AquaConsole [" + strings.version + "1.3.0100]";
+        public static string ProgramVersion = "AquaConsole [" + strings.version +" "+ "1.4.0000]";
 
         static void Main(string[] args)
         {
@@ -41,9 +42,10 @@ namespace AquaConsole
 
         private static void Setup()
         {
-            if (!Utility.FileOrDirectoryExists("/plugins"))
+            string exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);            
+            if (!Utility.FileOrDirectoryExists(@exeDir + @"\plugins\"))
             {
-                Directory.CreateDirectory("/plugins");
+                Directory.CreateDirectory(@exeDir + @"\plugins\");
                 Console.WriteLine("created plugins folder");
             }
 
