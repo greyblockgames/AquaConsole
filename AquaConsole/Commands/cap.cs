@@ -21,7 +21,7 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "Changes account password if you have admin rights";
+                return null;
             }
         }
 

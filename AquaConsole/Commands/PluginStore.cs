@@ -33,7 +33,7 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "opens the plugin management interface";
+                return strings.pluginmanagerhelp;
             }
         }
 

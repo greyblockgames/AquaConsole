@@ -169,6 +169,15 @@ namespace AquaConsole {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to makes the application fill up the entire screen..
+        /// </summary>
+        internal static string fullscreentext {
+            get {
+                return ResourceManager.GetString("fullscreentext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Displays this help text..
         /// </summary>
         internal static string helphelp {
@@ -210,6 +219,15 @@ namespace AquaConsole {
         internal static string helpmenuusageborder {
             get {
                 return ResourceManager.GetString("helpmenuusageborder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to opens the plugin manager screen..
+        /// </summary>
+        internal static string pluginmanagerhelp {
+            get {
+                return ResourceManager.GetString("pluginmanagerhelp", resourceCulture);
             }
         }
         
