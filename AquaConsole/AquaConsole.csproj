@@ -76,7 +76,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Date.cs" />
     <Compile Include="Commands\fullscreen.cs" />
+    <Compile Include="Commands\trace.cs" />
+    <Compile Include="Commands\ping.cs" />
     <Compile Include="Commands\PluginStore.cs" />
     <Compile Include="Commands\plugins.cs" />
     <Compile Include="Commands\restart.cs" />
@@ -102,6 +105,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Trace.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

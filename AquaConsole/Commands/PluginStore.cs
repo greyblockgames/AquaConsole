@@ -42,7 +42,8 @@ namespace AquaConsole.Commands
         public void CommandMethod(string p)
         {
             XmlDocument doc = new XmlDocument();
-            try {
+            try
+            {
                 doc.Load("https://raw.githubusercontent.com/lukasdragon/AquaConsolePlugins/master/plugins.xml");
                 foreach (XmlNode node in doc.DocumentElement.ChildNodes)
                 {
@@ -103,8 +104,8 @@ namespace AquaConsole.Commands
                         Uri ur = new Uri(PluginURL[selection - 1]);
 
                         Console.WriteLine("Started download, please wait...");
-                       // client.DownloadProgressChanged += WebClientDownloadProgressChanged;
-                       // client.DownloadDataCompleted += WebClientDownloadCompleted;
+                        // client.DownloadProgressChanged += WebClientDownloadProgressChanged;
+                        // client.DownloadDataCompleted += WebClientDownloadCompleted;
                         client.DownloadFile(ur, @exeDir + @"\plugins\" + PluginName[selection - 1] + ".dll");
 
 
@@ -114,7 +115,7 @@ namespace AquaConsole.Commands
                         Utility.WriteNotice("Plugin " + PluginName[selection - 1] + " has been installed successfully!");
                         Console.WriteLine("Plugin " + PluginName[selection - 1] + " has been downloaded successfully! Now Restarting");
                         Utility.Wait(0.25F);
-                        
+
                         //Restarts application to load plugin
                         Utility.RestartProgram();
                     }
@@ -137,8 +138,8 @@ namespace AquaConsole.Commands
             {
                 Utility.ErrorWriteLine("Please check your internet connection and try again!");
             }
-            
-            }
+
+        }
 
 
 

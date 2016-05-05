@@ -13,7 +13,7 @@ namespace AquaConsole
     {
         public static Boolean quitNow = false;
 
-        public static string ProgramVersion = "AquaConsole [" + strings.version +" "+ "1.4.1000]";
+        public static string ProgramVersion = "AquaConsole [" + strings.version +" "+ "1.5.0000]";
 
         static void Main(string[] args)
         {

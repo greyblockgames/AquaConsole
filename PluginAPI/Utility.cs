@@ -260,8 +260,7 @@ namespace PluginAPI
         public static void Wait(float seconds)
         {
             int waittime = Convert.ToInt32(seconds * 1000F);
-            Thread.Sleep((waittime));
-            Console.WriteLine(waittime.ToString());
+            Thread.Sleep((waittime));            
         }
 
 
