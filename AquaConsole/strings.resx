@@ -182,11 +182,11 @@
     <comment>should be the same length as the help menu command title.</comment>
   </data>
   <data name="helpmenuusage" xml:space="preserve">
-    <value>Usage</value>
+    <value>Description</value>
     <comment>displayed as a title in the help menu.</comment>
   </data>
   <data name="helpmenuusageborder" xml:space="preserve">
-    <value>=====</value>
+    <value>===========</value>
     <comment>should be the same length as the help menu usage title.</comment>
   </data>
   <data name="pluginmanagerhelp" xml:space="preserve">

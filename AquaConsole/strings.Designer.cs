@@ -205,7 +205,7 @@ namespace AquaConsole {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Usage.
+        ///   Looks up a localized string similar to Description.
         /// </summary>
         internal static string helpmenuusage {
             get {
@@ -214,7 +214,7 @@ namespace AquaConsole {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to =====.
+        ///   Looks up a localized string similar to ===========.
         /// </summary>
         internal static string helpmenuusageborder {
             get {
