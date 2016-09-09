@@ -14,13 +14,14 @@ namespace AquaConsole.Managers
 
         public static ICollection<Type> commandTypes = new List<Type>();
 
-        public static void loadPlugins(string pluginFolder)
+        public void loadPlugins(string pluginFolder)
         {
 
             string exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             //Calls DateEvents for date specific events
-            DateEvents.Trigger();
+            DateEvents de = new DateEvents();
+            de.Trigger();
 
 
             //Search plugin folder
@@ -46,7 +47,6 @@ namespace AquaConsole.Managers
                 //Load all files
                 Type pluginType = typeof(IPlugin);
                 ICollection<Type> pluginTypes = new List<Type>();
-
                 foreach (Assembly assembly in assemblies)
                 {
                     if (assembly != null)

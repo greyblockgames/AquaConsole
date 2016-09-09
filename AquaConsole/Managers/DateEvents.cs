@@ -9,9 +9,8 @@ namespace AquaConsole.Managers
 {
     class DateEvents
     {
-        public static void Trigger()
+        public void Trigger()
         {
-
             //Lukas birthday event
             DateTime LukasBirthday = new DateTime(DateTime.Today.Year, 3, 29);
             if (LukasBirthday == DateTime.Today)
@@ -24,18 +23,13 @@ namespace AquaConsole.Managers
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("Lukas!!!");
                 Console.ResetColor();
-
                 HappyBirthdaySong();
-
-
                 System.Threading.Thread.Sleep(100);
                 Console.Clear();
             }
-
-
         }
 
-        private static void HappyBirthdaySong()
+        private void HappyBirthdaySong()
         {
             Console.Beep(264, 125);
             Thread.Sleep(250);

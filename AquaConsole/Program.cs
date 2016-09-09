@@ -11,6 +11,7 @@ namespace AquaConsole
 
     class Program
     {
+
         public static Boolean quitNow = false;
 
         public static string ProgramVersion = "AquaConsole [" + strings.version +" "+ "1.5.0000]";
@@ -50,7 +51,7 @@ namespace AquaConsole
             }
 
 
-            
+            PluginManager PluginManager = new PluginManager();
             PluginManager.loadPlugins("plugins");
             Console.WriteLine("loaded plugins...");
             CommandManager.LoadCommands();

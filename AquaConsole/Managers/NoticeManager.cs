@@ -10,12 +10,11 @@ using System.Threading.Tasks;
 
 namespace AquaConsole.Managers
 {
-    public static class NoticeManager
+    public class NoticeManager
     {
         
         public static void ReadNotice()
         {
-
             string noticefile = "notice.nf";
             string exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
@@ -30,9 +29,7 @@ namespace AquaConsole.Managers
                 {
                     Utility.NotifyWriteLine(line);
                 }
-
                 file.Close();
-
                 File.Delete(exeDir + "/" + noticefile);
             }
         }

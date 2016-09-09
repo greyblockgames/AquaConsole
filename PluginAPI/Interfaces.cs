@@ -11,6 +11,9 @@ namespace PluginAPI
     /// </summary>
     public interface ICommand
     {
+      //  int MinVersion(int v = 0);
+        
+
         /// <summary>
         /// return the command name string
         /// </summary>

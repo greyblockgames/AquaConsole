@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//Todo move to seperate plugin
 namespace AquaConsole.Commands
 {
     class cap : ICommand

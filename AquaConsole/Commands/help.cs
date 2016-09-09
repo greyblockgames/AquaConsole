@@ -27,11 +27,7 @@ namespace AquaConsole.Commands
         }
 
         public void CommandMethod(string p)
-        {
-
-            
-
-
+        {        
             var offset = CommandManager.HelpText.Max(s => s.Length / 2);
             var formatString = "{0,-" + offset + "}     {1}";
             Console.WriteLine(formatString, strings.helpmenucommandborder, " " + strings.helpmenuusageborder);
