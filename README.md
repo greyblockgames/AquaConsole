@@ -38,3 +38,5 @@ To install a plugin, type `pm` or drag the downloaded .dll file into the plugins
 
  GNU GENERAL PUBLIC LICENSE
   Version 3, 29 June 2007
+  
+[![Build status](https://ci.appveyor.com/api/projects/status/b4h9r7dvru3f8iwj?svg=true)](https://ci.appveyor.com/project/lukasdragon/aquaconsole)
