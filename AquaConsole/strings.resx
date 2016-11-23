@@ -210,7 +210,7 @@
     <comment>displayed in the help menu.</comment>
   </data>
   <data name="unknowncommand" xml:space="preserve">
-    <value>Unknown command.</value>
+    <value>Unknown command</value>
     <comment>displayed when an unknown command is typed into the console.</comment>
   </data>
   <data name="version" xml:space="preserve">

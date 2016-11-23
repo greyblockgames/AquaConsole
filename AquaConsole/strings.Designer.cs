@@ -268,7 +268,7 @@ namespace AquaConsole {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unknown command..
+        ///   Looks up a localized string similar to Unknown command.
         /// </summary>
         internal static string unknowncommand {
             get {
