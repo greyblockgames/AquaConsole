@@ -38,7 +38,14 @@ namespace AquaConsole.Commands
                 {
                     Console.WriteLine("Password:");
                     Encrypt.Phrase = Utility.ReadLineMasked(Char.Parse("*"));
-                    Encrypt.Encrypt(input, "Encrypted" + Path.GetExtension(input));                    
+                    try
+                    {
+                        Encrypt.Encrypt(input, "Encrypted" + Path.GetExtension(input));
+                    }
+                    catch (Exception ex)
+                    {
+                        Utility.ErrorWriteLine("Invalid Password!");
+                    }
                     Utility.NotifyWriteLine("Complete!");
                 }
                 else
@@ -55,7 +62,14 @@ namespace AquaConsole.Commands
                     string output = "Output -" + input;
                     Console.WriteLine("Password:");
                     Encrypt.Phrase = Utility.ReadLineMasked(Char.Parse("*"));
-                    Encrypt.Decrypt(input, "Decrypted" + Path.GetExtension(input));                    
+                    try
+                    {
+                        Encrypt.Decrypt(input, "Decrypted" + Path.GetExtension(input));
+                    }
+                    catch (Exception ex)
+                    {
+                        Utility.ErrorWriteLine("Invalid Password!");
+                    }
                     Utility.NotifyWriteLine("Complete!");
               
                 }
