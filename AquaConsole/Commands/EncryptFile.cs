@@ -40,7 +40,7 @@ namespace AquaConsole.Commands
                     Encrypt.Phrase = Utility.ReadLineMasked(Char.Parse("*"));
                     try
                     {
-                        Encrypt.Encrypt(input, "Encrypted" + Path.GetExtension(input));
+                        Encrypt.Encrypt(input);
                     }
                     catch (Exception)
                     {
@@ -59,19 +59,17 @@ namespace AquaConsole.Commands
                 string input = Utility.TextInput("File to be decrypted (including extension):");
                 if (Utility.FileOrDirectoryExists(input))
                 {
-                    string output = "Output -" + input;
                     Console.WriteLine("Password:");
                     Encrypt.Phrase = Utility.ReadLineMasked(Char.Parse("*"));
                     try
                     {
-                        Encrypt.Decrypt(input, "Decrypted" + Path.GetExtension(input));
+                        Encrypt.Decrypt(input);
                     }
                     catch (Exception)
                     {
                         Utility.ErrorWriteLine("Invalid Password!");
                     }
                     Utility.NotifyWriteLine("Complete!");
-              
                 }
                 else
                 {
