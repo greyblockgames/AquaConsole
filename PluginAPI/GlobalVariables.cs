@@ -8,6 +8,9 @@ namespace PluginAPI
 {
    public class GlobalLists
     {
+        /// <summary>
+        /// A list containing all loaded plugins
+        /// </summary>
         public static List<string> LoadedPlugins = new List<string>();
     }
 }

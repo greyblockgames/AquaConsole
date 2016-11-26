@@ -42,7 +42,7 @@ namespace AquaConsole.Commands
                     {
                         Encrypt.Encrypt(input, "Encrypted" + Path.GetExtension(input));
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         Utility.ErrorWriteLine("Invalid Password!");
                     }
@@ -66,7 +66,7 @@ namespace AquaConsole.Commands
                     {
                         Encrypt.Decrypt(input, "Decrypted" + Path.GetExtension(input));
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         Utility.ErrorWriteLine("Invalid Password!");
                     }
