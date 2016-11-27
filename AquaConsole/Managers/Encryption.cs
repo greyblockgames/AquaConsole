@@ -1,6 +1,7 @@
 ﻿//Code adapted from http://www.codeproject.com/Articles/20564/Encrypt-Decrypt-File-or-String
 
 
+using PluginAPI;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -48,8 +49,9 @@ namespace AquaConsole.Managers
         /// </summary>
         /// <param name="EncryptValue">Value to encrypt</param>
         /// <returns>Encrypted value. </returns>
-        public void Encrypt(string InputFile, string OutputFile)
+        public void Encrypt(string InputFile)
         {
+            string OutputFile = "encryption.tmp";
             try
             {
                 if ((InputFile != null) && (InputFile.Length > 0))
@@ -66,6 +68,10 @@ namespace AquaConsole.Managers
             {
                 throw ex;
             }
+
+            File.Delete(InputFile);
+            File.Copy(OutputFile, InputFile, true);
+            File.Delete(OutputFile);
         }
 
         /// <summary>
@@ -73,8 +79,9 @@ namespace AquaConsole.Managers
         /// </summary>
         /// <param name="DecryptValue">Value to decrypt</param>
         /// <returns>Decrypted value. </returns>
-        public void Decrypt(string InputFile, string OutputFile)
+        public void Decrypt(string InputFile)
         {
+            string OutputFile = "encryption.tmp";
             try
             {
                 if ((InputFile != null) && (InputFile.Length > 0))
@@ -91,6 +98,9 @@ namespace AquaConsole.Managers
             {
                 throw ex;
             }
+            File.Delete(InputFile);
+            File.Copy(OutputFile, InputFile, true);
+            File.Delete(OutputFile);
         }
 
         /*****************************************************************

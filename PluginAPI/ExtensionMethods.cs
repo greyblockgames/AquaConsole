@@ -20,6 +20,13 @@ namespace PluginAPI
                 .ToArray());
         }
 
+        /// <summary>
+        /// Replaces first instance of a string
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="search"></param>
+        /// <param name="replace"></param>
+        /// <returns></returns>
         public static string ReplaceFirst(this string text, string search, string replace)
         {
             int pos = text.IndexOf(search);
