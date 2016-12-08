@@ -27,10 +27,11 @@ namespace AquaConsole.Commands
 
         public void CommandMethod(string p)
         {
+            p = p.Replace(@"""", "");
             if (Utility.FileOrDirectoryExists(p))
                 Environment.CurrentDirectory = p;
             else
-                Utility.ErrorWriteLine(strings.cderrorpathnotfound);
+                Utility.ErrorWriteLine(strings.cderrorpathnotfound);           
         }
     }
 }
