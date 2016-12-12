@@ -1,3 +1,34 @@
+version: 1.0.{build}
+branches:
+  only:
+  - master
+configuration: Release
+build:
+  verbosity: minimal
+after_build:
+- cmd: >-
+    7z.exe a AquaConsole.zip %APPVEYOR_BUILD_FOLDER%\AquaConsole\bin\Release\* -r -x!*.config -x!*.pdb -x!AquaConsole.vshost.exe
+
+
+    appveyor PushArtifact AquaConsole.zip
+artifacts:
+- path: AquaConsole.zip
+  name: AquaConsole
+deploy:
+- provider: GitHub
+  description: Automatic AppVeyor build!
+  auth_token:
+    secure: RgIZME9C94GEtLWYBary3KCdVpRrUYKgY5biuNyuzKNh4q37I8pgMnEi5nUp82I9
+  artifact: AquaConsole
+  force_update: false
+notifications:
+- provider: Slack
+  incoming_webhook: https://discordapp.com/api/webhooks/250476671965069322/IU8E5wORnlzh-0bcNKcxk1uYxJ5sdZzsjaKoOQmhIDusi33-gpBsTRR0vYvZnIMR_l26/slack
+  channel: 250476554440671233
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: false
+  
 assembly_info:
   patch: true
   file: AssemblyInfo.*
