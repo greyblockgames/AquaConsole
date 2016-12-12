@@ -30,7 +30,7 @@ namespace AquaConsole.Commands
             string path = string.Empty;
             for (int i = 0; i < p.Length; i++)
             {               
-                path = path + p[i];
+                path = path + " " + p[i];
             }
                 path = path.Replace(@"""", "");
             if (Utility.FileOrDirectoryExists(path))
