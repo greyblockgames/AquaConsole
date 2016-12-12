@@ -35,8 +35,8 @@ namespace PluginAPI
         /// Your commands method, P is the parametre supplied.
         /// </summary>
         /// <param name="p"></param>
-        void CommandMethod(string p);
-
+        void CommandMethod(string[] p);
+      
     }
 
 

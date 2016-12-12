@@ -25,9 +25,14 @@ namespace AquaConsole.Commands
             }
         }
 
-        public void CommandMethod(string p)
+        public void CommandMethod(string[] p)
         {
-            Console.Title = p;
+            string path = string.Empty;
+            for (int i = 0; i < p.Length; i++)
+            {
+                path = path + " " + p[i];
+            }
+            Console.Title = path;
         }
     }
 }

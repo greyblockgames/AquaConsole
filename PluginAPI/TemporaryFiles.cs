@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace PluginAPI
 {
+  
     public static partial class TemporaryFiles
     {
         private const string UserFilesListFilenamePrefix = ".used-temporary-files.txt";

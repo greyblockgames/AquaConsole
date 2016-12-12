@@ -25,11 +25,16 @@ namespace AquaConsole.Commands
             }
         }
 
-        public void CommandMethod(string p)
+        public void CommandMethod(string[] p)
         {
-            p = p.Replace(@"""", "");
-            if (Utility.FileOrDirectoryExists(p))
-                Environment.CurrentDirectory = p;
+            string path = string.Empty;
+            for (int i = 0; i < p.Length; i++)
+            {               
+                path = path + p[i];
+            }
+                path = path.Replace(@"""", "");
+            if (Utility.FileOrDirectoryExists(path))
+                Environment.CurrentDirectory = path;
             else
                 Utility.ErrorWriteLine(strings.cderrorpathnotfound);           
         }

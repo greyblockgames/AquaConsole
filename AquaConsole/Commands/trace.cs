@@ -31,13 +31,18 @@ namespace AquaConsole.Commands
         }
 
 
-        public void CommandMethod(string p)
+        public void CommandMethod(string[] p)
         {
+            string path = string.Empty;
+            for (int i = 0; i < p.Length; i++)
+            {
+                path = path + "" + p[i];
+            }
 
             string IP;
             string SMaxHops;
-            IP = p.Split(' ').First();
-            SMaxHops = p.Remove(IP.IndexOf(IP), IP.Length).RemoveWhitespace();
+            IP = path.Split(' ').First();
+            SMaxHops = path.Remove(IP.IndexOf(IP), IP.Length).RemoveWhitespace();
 
 
             //Removes all non number characters from string 

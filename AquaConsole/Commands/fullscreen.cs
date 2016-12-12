@@ -25,7 +25,7 @@ namespace AquaConsole.Commands
             }
         }
 
-        public void CommandMethod(string p)
+        public void CommandMethod(string[] p)
         {
             Console.BufferWidth = Console.LargestWindowWidth;
             Console.WindowWidth = Console.LargestWindowWidth;
