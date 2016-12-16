@@ -14,8 +14,8 @@ namespace AquaConsole
 
         public static Boolean quitNow = false;
 
-       
-        public static string ProgramVersion = "AquaConsole [" + strings.version +" "+ Assembly.GetExecutingAssembly().GetName().Version + "]";    
+     
+        public static string ProgramVersion = "AquaConsole [" + strings.version +" "+ GetVersion() + "]";    
 
         static void Main(string[] args)
         {
@@ -32,14 +32,17 @@ namespace AquaConsole
                 RootCommand = Console.ReadLine();
                 command = RootCommand.Split(' ').First();
                 Argument = RootCommand.Remove(command.IndexOf(command), command.Length);
-
-
-
-
                 CommandManager.RunCommand(command, Argument);
-
-
             }
+        }
+
+        static string GetVersion()
+        {
+            if (Assembly.GetExecutingAssembly().GetName().Version.ToString().Equals("1.0.0.0"))
+            {
+                return "UNKNOWN";
+            }            
+            return Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         private static void Setup()
