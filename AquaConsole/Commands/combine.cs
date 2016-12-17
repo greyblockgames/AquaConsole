@@ -25,7 +25,7 @@ namespace AquaConsole.Commands
             }
         }
 
-        public void CommandMethod(string p)
+        public void CommandMethod(string[] p)
         {
             String image = Utility.TextInput(strings.combineiimage);
             String zip = Utility.TextInput(strings.combineiarchive);

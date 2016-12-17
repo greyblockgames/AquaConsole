@@ -27,7 +27,7 @@ namespace AquaConsole.Commands
             }
         }
 
-        public void CommandMethod(string p)
+        public void CommandMethod(string[] p)
         {
             var Encrypt = new Encryption();
 

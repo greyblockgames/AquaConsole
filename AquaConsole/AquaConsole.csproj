@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -46,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -84,9 +87,7 @@
     <Compile Include="Commands\PluginStore.cs" />
     <Compile Include="Commands\plugins.cs" />
     <Compile Include="Commands\restart.cs" />
-    <Compile Include="Commands\XmlGenerator.cs" />
     <Compile Include="Managers\CommandManager.cs" />
-    <Compile Include="Commands\cap.cs" />
     <Compile Include="Commands\cd.cs" />
     <Compile Include="Commands\clear screen.cs" />
     <Compile Include="Commands\cmd.cs" />

@@ -25,7 +25,7 @@ namespace AquaConsole.Commands
             }
         }
 
-        public void CommandMethod(string p)
+        public void CommandMethod(string[] p)
         {
             Console.Write("Plugins(" + GlobalLists.LoadedPlugins.Count + "): ");
             foreach (string PluginName in GlobalLists.LoadedPlugins)
