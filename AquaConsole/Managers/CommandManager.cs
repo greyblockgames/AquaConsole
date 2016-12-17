@@ -20,7 +20,7 @@ namespace AquaConsole.Managers
                 return privateHelpText;
             }
         }
-        private static Dictionary<String, Action<string>> CommandDictionary = new Dictionary<String, Action<string>>();
+        private static Dictionary<String, Action<string[]>> CommandDictionary = new Dictionary<String, Action<string[]>>();
 
         public static void LoadCommands()
         {
@@ -64,7 +64,8 @@ namespace AquaConsole.Managers
             //Checks if the dictionary contains the command, otherwise output unknown command error
             if (CommandDictionary.ContainsKey(commandname.ToLower()))
             {
-                CommandDictionary[commandname.ToLower()](parameter.ReplaceFirst(" ", String.Empty));
+                string[] arguments = parameter.Split(' ');
+                CommandDictionary[commandname.ToLower()](arguments);
             }
             else
             {

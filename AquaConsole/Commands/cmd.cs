@@ -25,10 +25,16 @@ namespace AquaConsole.Commands
             }
         }
 
-        public void CommandMethod(string p)
+        public void CommandMethod(string[] p)
         {
-            if (!string.IsNullOrWhiteSpace(p))
-                Utility.ExecuteCommandSync(p);
+            string path = string.Empty;
+            for (int i = 0; i < p.Length; i++)
+            {
+                path = path + p[i];
+            }
+
+            if (!string.IsNullOrWhiteSpace(path))
+                Utility.ExecuteCommandSync(path);
             else
                 Utility.ErrorWriteLine(strings.errornoargumentssupplied);
         }
