@@ -67,11 +67,6 @@ namespace AquaConsole
             NoticeManager.ReadNotice();
 
 
-
-
-
-
-
             if (!Utility.IsUserAdministrator())
                 Utility.ErrorWriteLine(strings.warningnotadmin);
 
