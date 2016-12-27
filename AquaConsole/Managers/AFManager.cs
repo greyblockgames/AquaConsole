@@ -2,7 +2,9 @@
 using PluginAPI;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,14 +13,33 @@ namespace AquaConsole.Managers
 {
     class AFManager
     {
-        //TODO
-        internal static void setassociations()
+        private static Dictionary<String, Action<string>> FileAssociation = new Dictionary<String, Action<string>>();
+
+        
+        internal static void LoadAssociations()
         {
-            throw new NotImplementedException();
+            //loops through all files
+            foreach (Type t in Assembly.GetCallingAssembly().GetTypes())
+            {
+                //Gets all files implementing IAssociatedFile
+                if (t.GetInterface("IAssociatedFile") != null)
+                {
+                    IAssociatedFile executor = Activator.CreateInstance(t) as IAssociatedFile;
+                    //Loads interface method into a dictionary
+                    if (!string.IsNullOrEmpty(executor.Extension))
+                    {
+                        FileAssociation.Add(executor.Extension.ToLower(), (file) => { executor.CommandMethod(file); });
+                        SetAssociation_User(executor.Extension.ToLower(), System.Reflection.Assembly.GetExecutingAssembly().Location, "AquaConsole");
+                        
+                    }
+                }
+            }
         }
 
+        
+
         //Sets the file association
-        private void SetAssociation_User(string Extension, string OpenWith, string ExecutableName)
+        private static void SetAssociation_User(string Extension, string OpenWith, string ExecutableName)
         {
             try
             {
@@ -90,20 +111,36 @@ namespace AquaConsole.Managers
         }
 
        
+       
+        internal static void OpenAssociatedFile(string File)
+        {
+            string extension = Path.GetExtension(File).Replace(".","");
+            if (FileAssociation.ContainsKey(extension))
+            {
+                FileAssociation[extension.ToLower()](File);
+            }
+        }
+
+
+        public static bool HasExecutable(string path)
+        {
+            var executable = FindExecutable(path);
+            return !string.IsNullOrEmpty(executable);
+        }
+
+        private static string FindExecutable(string path)
+        {
+            var executable = new StringBuilder(1024);
+            FindExecutable(path, string.Empty, executable);
+            return executable.ToString();
+        }
+
+        [DllImport("shell32.dll", EntryPoint = "FindExecutable")]
+        private static extern long FindExecutable(string lpFile, string lpDirectory, StringBuilder lpResult);
 
         [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern void SHChangeNotify(uint wEventId, uint uFlags, IntPtr dwItem1, IntPtr dwItem2);
 
-
-
-        //TODO
-        internal static void OpenAssociatedFile(string v)
-        {
-            throw new NotImplementedException();
-        }
-
         
     }
-
-
 }

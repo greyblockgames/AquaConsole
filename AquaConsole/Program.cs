@@ -40,14 +40,14 @@ namespace AquaConsole
             var CommandManager = new CommandManager();
             Setup();
 
+           
             //Runs file that was opened with AC.
             if (args.Length > 0)
-            {
+            {              
                 AFManager.OpenAssociatedFile(args[0]);
             }
 
-
-                String RootCommand;
+            String RootCommand;
             String command;
             String Argument;
 
@@ -79,14 +79,15 @@ namespace AquaConsole
             PluginManager PluginManager = new PluginManager();
             PluginManager.loadPlugins("plugins");
             Console.WriteLine("loaded plugins...");
-            AFManager.setassociations();
-            Console.WriteLine("Set file associations");
+            AFManager.LoadAssociations();
+            Console.WriteLine("Set file associations...");
             CommandManager.LoadCommands();
             Console.WriteLine("loaded commands...");
             Environment.CurrentDirectory = "C:/";
             Console.WriteLine("set current directory to C:/");
             Console.Clear();
 
+            
             NoticeManager.ReadNotice();
 
 
