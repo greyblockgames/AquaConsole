@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 namespace PluginAPI
 {
     /// <summary>
-    /// Use this interface for all your commands
+    /// Use this interface to register all your commands
     /// </summary>
     public interface ICommand
-    {
-      //  int MinVersion(int v = 0);
-        
-
+    {  
         /// <summary>
         /// return the command name string
         /// </summary>
@@ -32,7 +29,7 @@ namespace PluginAPI
 
 
         /// <summary>
-        /// Your commands method, P is the parametre supplied.
+        /// Your commands method, P is the parameter supplied.
         /// </summary>
         /// <param name="p"></param>
         void CommandMethod(string[] p);
@@ -41,11 +38,10 @@ namespace PluginAPI
 
 
     /// <summary>
-    /// This is the interface you will use to register with the console
+    /// Use this interface to register your plugin with the console.
     /// </summary>
     public interface IPlugin
     {
-
         /// <summary>
         /// return your plugin name here
         /// </summary>
@@ -69,4 +65,25 @@ namespace PluginAPI
         /// </summary>
         void PostLoadMethod();
     }
+
+    /// <summary>
+    /// This is the interface you will use to register a new file association.
+    /// </summary>
+    public interface IAssociatedFile
+    {
+        /// <summary>
+        /// File extension without period (instead of .exe, return exe)
+        /// </summary>
+        string Extension
+        {
+            get;
+        }
+
+        /// <summary>
+        /// the method called when this file type is opened.
+        /// </summary>
+        /// <param name="file"></param>
+        void CommandMethod(string file);
+    }
+    
 }
