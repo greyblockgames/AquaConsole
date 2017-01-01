@@ -15,7 +15,7 @@ namespace AquaConsole.Managers
     {
         private static Dictionary<String, Action<string>> FileAssociation = new Dictionary<String, Action<string>>();
 
-        
+
         internal static void LoadAssociations()
         {
             //loops through all files
@@ -29,14 +29,37 @@ namespace AquaConsole.Managers
                     if (!string.IsNullOrEmpty(executor.Extension))
                     {
                         FileAssociation.Add(executor.Extension.ToLower(), (file) => { executor.CommandMethod(file); });
-                        SetAssociation_User(executor.Extension.ToLower(), System.Reflection.Assembly.GetExecutingAssembly().Location, "AquaConsole");
-                        
+                        if (!HasExecutable(executor.Extension.ToLower()))
+                            SetAssociation_User(executor.Extension.ToLower(), System.Reflection.Assembly.GetExecutingAssembly().Location, "AquaConsole");
+
                     }
                 }
             }
         }
 
-        
+
+
+        internal static void OpenAssociatedFile(string File)
+        {
+            string extension = Path.GetExtension(File).Replace(".", "");
+            if (FileAssociation.ContainsKey(extension))
+            {
+                FileAssociation[extension.ToLower()](File);
+            }
+            else
+            {
+                if (FindExecutable(File) != System.Reflection.Assembly.GetExecutingAssembly().Location)
+                {
+                    //TODO 
+                    //removes association if no interface is adding that extension
+                }
+            }
+        }
+
+
+
+
+
 
         //Sets the file association
         private static void SetAssociation_User(string Extension, string OpenWith, string ExecutableName)
@@ -110,17 +133,6 @@ namespace AquaConsole.Managers
             }
         }
 
-       
-       
-        internal static void OpenAssociatedFile(string File)
-        {
-            string extension = Path.GetExtension(File).Replace(".","");
-            if (FileAssociation.ContainsKey(extension))
-            {
-                FileAssociation[extension.ToLower()](File);
-            }
-        }
-
 
         public static bool HasExecutable(string path)
         {
@@ -141,6 +153,6 @@ namespace AquaConsole.Managers
         [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern void SHChangeNotify(uint wEventId, uint uFlags, IntPtr dwItem1, IntPtr dwItem2);
 
-        
+
     }
 }
