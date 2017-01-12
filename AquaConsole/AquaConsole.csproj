@@ -87,6 +87,8 @@
     <Compile Include="Commands\PluginStore.cs" />
     <Compile Include="Commands\plugins.cs" />
     <Compile Include="Commands\restart.cs" />
+    <Compile Include="FileAssociations\nf.cs" />
+    <Compile Include="Managers\AFManager.cs" />
     <Compile Include="Managers\CommandManager.cs" />
     <Compile Include="Commands\cd.cs" />
     <Compile Include="Commands\clear screen.cs" />

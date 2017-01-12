@@ -59,7 +59,7 @@ namespace AquaConsole.Managers
         }
 
 
-        public static void RunCommand(string commandname, string parameter)
+        public void RunCommand(string commandname, string parameter)
         {
             //Checks if the dictionary contains the command, otherwise output unknown command error
             if (CommandDictionary.ContainsKey(commandname.ToLower()))

@@ -14,12 +14,39 @@ namespace AquaConsole
 
         public static Boolean quitNow = false;
 
-     
-        public static string ProgramVersion = "AquaConsole [" + strings.version +" "+ GetVersion() + "]";    
+        //Program version string
+        public static string ProgramVersion
+        {
+            get
+            {
+                return "AquaConsole [" + strings.version + " " + GetVersion() + "]";
+            }
+        } 
 
+        static string GetVersion()
+        {
+            if (Assembly.GetExecutingAssembly().GetName().Version.ToString().Equals("1.0.0.0"))
+            {
+                return "UNKNOWN";
+            }
+            return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        }
+
+
+
+        //Entry method
         static void Main(string[] args)
         {
+            var CommandManager = new CommandManager();
             Setup();
+
+           
+            //Runs file that was opened with AC.
+            if (args.Length > 0)
+            {              
+                AFManager.OpenAssociatedFile(args[0]);
+            }
+
             String RootCommand;
             String command;
             String Argument;
@@ -36,40 +63,32 @@ namespace AquaConsole
             }
         }
 
-        static string GetVersion()
-        {
-            if (Assembly.GetExecutingAssembly().GetName().Version.ToString().Equals("1.0.0.0"))
-            {
-                return "UNKNOWN";
-            }            
-            return Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        }
 
-        private static void Setup()
+
+        //Where everything gets set up :)
+        internal static void Setup()
         {
-            string exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);            
+            string exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             if (!Utility.FileOrDirectoryExists(@exeDir + @"\plugins\"))
             {
                 Directory.CreateDirectory(@exeDir + @"\plugins\");
                 Console.WriteLine("created plugins folder");
             }
 
-
+            //Loading sequence
             PluginManager PluginManager = new PluginManager();
             PluginManager.loadPlugins("plugins");
             Console.WriteLine("loaded plugins...");
+            AFManager.LoadAssociations();
+            Console.WriteLine("Set file associations...");
             CommandManager.LoadCommands();
             Console.WriteLine("loaded commands...");
             Environment.CurrentDirectory = "C:/";
             Console.WriteLine("set current directory to C:/");
             Console.Clear();
 
+            
             NoticeManager.ReadNotice();
-
-
-
-
-
 
 
             if (!Utility.IsUserAdministrator())
@@ -78,7 +97,6 @@ namespace AquaConsole
             Console.Title = "AquaConsole";
             Console.WriteLine(ProgramVersion);
             Console.WriteLine(strings.copyrightGBG);
-
             CommandManager.HelpText.Sort();
         }
 
