@@ -35,6 +35,6 @@ namespace PluginAPI
                 return text;
             }
             return text.Substring(0, pos) + replace + text.Substring(pos + search.Length);
-        }
+        }     
     }
 }

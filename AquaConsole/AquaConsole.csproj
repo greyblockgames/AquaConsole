@@ -82,6 +82,7 @@
     <Compile Include="Commands\Date.cs" />
     <Compile Include="Commands\EncryptFile.cs" />
     <Compile Include="Commands\fullscreen.cs" />
+    <Compile Include="Commands\PigLatin.cs" />
     <Compile Include="Commands\trace.cs" />
     <Compile Include="Commands\ping.cs" />
     <Compile Include="Commands\PluginStore.cs" />

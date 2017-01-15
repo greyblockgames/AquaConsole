@@ -6,7 +6,7 @@ using System.IO;
 using AquaConsole.Managers;
 using System.Reflection;
 
-namespace AquaConsole
+namespace AquaConsole 
 {
 
     class Program
