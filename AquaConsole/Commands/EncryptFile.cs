@@ -31,7 +31,7 @@ namespace AquaConsole.Commands
         {
             var Encrypt = new Encryption();
 
-            if (p.Equals("encrypt"))
+            if (p[1].Equals("encrypt"))
             {
                 string input = Utility.TextInput("File to be encrypted (including extension):");
                 if (Utility.FileOrDirectoryExists(input))
@@ -54,7 +54,7 @@ namespace AquaConsole.Commands
                 }
 
             }
-            else if (p.Equals("decrypt"))
+            else if (p[1].Equals("decrypt"))
             {
                 string input = Utility.TextInput("File to be decrypted (including extension):");
                 if (Utility.FileOrDirectoryExists(input))
